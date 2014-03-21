@@ -142,6 +142,13 @@ INSERT INTO locations VALUES
      (3100,'Pieter Breughelstraat 837','3029SK','Utrecht','Utrecht','NL'),
      (3200,'Mariano Escobedo 9991','11932','Mexico City','Distrito Federal,','MX');
      
+-- values of countries
+INSERT INTO Countries VALUES 
+     ('UK','United Kingdom', 1),
+     ('CZ', 'Czech Republic', 1),
+     ('DE', 'Germany', 1),
+     ('US', 'United States of America', 2);
+     
 -- values of regions
 INSERT INTO regions VALUES 
      (1,'Europe'),

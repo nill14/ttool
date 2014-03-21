@@ -1,4 +1,4 @@
--- Drop celej DB
+-- Drop whole DB
 DROP ALL OBJECTS;
 
 -- counties table creation

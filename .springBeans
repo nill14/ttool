@@ -8,6 +8,11 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/main/resources/spring/applicationContext.xml</config>
+		<config>src/main/resources/spring/jdbcContext.xml</config>
+		<config>src/main/resources/spring/hbmContext.xml</config>
+		<config>src/test/resources/spring/applicationContext.xml</config>
+		<config>src/test/resources/spring/jdbcContext.xml</config>
+		<config>src/test/resources/spring/hbmContext.xml</config>		
 	</configs>
 	<configSets>
 	</configSets>

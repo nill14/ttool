@@ -8,7 +8,9 @@ import static org.junit.Assert.assertTrue;
 
 import javax.sql.DataSource;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,8 +23,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(locations="classpath:/spring/applicationContext.xml")
-public class SampleTest {
+public class DataSourceTest {
 
+	@Rule
+	public TestWatcher testWatcher = new LoggingTestWatcher();
+	
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 	
@@ -54,5 +59,20 @@ public class SampleTest {
 		String regionName = rowSet.getString("RegionName");
 		assertTrue(regionName != null);
 	}
+	
+	@Test
+	public void testRowSet2() {
+	
+		Object[] params = new Object[] { "CZ" };
+		SqlRowSet rowSet = jdbcTemplate.queryForRowSet("SELECT * FROM countries WHERE CountryISOCode = ?", params);
+			
+		assertTrue(rowSet.next());
+		
+		String isoCode = rowSet.getString("CountryISOCode");
+		assertTrue(isoCode != null);
+		
+		String name = rowSet.getString("CountryName");
+		assertTrue(name != null);
+	}	
 	
 }
