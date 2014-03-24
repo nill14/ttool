@@ -1,1 +1,4 @@
 /target
+/test.h2.db
+/test.trace.db
+/HR-script.sql
