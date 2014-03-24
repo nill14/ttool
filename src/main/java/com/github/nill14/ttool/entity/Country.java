@@ -1,24 +1,34 @@
 package com.github.nill14.ttool.entity;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "countries")
+@Table(name = "Countries")
 public class Country {
 	
 	@Id
-	@Column(name = "CountryIsoCode")
+	@Column(name = "countryIsoCode")
 	private String isoCode;
 	
-	@Column(name = "CountryName")
+	@Column(name = "countryName")
 	private String name;
 	
-//	@Column(name = "RegionId")
-//	private Integer regionId;
-
-	@OneToOne
-	@JoinColumn(name = "RegionId")
+	@ManyToOne
+	@JoinColumn(name = "regionId", foreignKey = @ForeignKey(name = "FK_Country_RegionId"))
 	private Region region;
+	
+	
+	@OneToMany(mappedBy = "country")
+	private List<Location> locations;
 	
 	
 	public String getIsoCode() {
@@ -43,6 +53,14 @@ public class Country {
 
 	public void setRegion(Region region) {
 		this.region = region;
+	}
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
 	}
 
 

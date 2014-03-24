@@ -1,0 +1,8 @@
+mvn h2:spawn
+mvn h2:stop
+
+
+java -cp h2-1.3.175.jar org.h2.tools.Server -tcp -tcpPort 8043 -trace
+java -cp h2-1.3.175.jar org.h2.tools.Server -tcpShutdown tcp://localhost:8043
+
+SCRIPT NODATA to 'HR-schema.sql';

@@ -30,7 +30,8 @@
 		
 	
 	<!-- PersistenceContext -->
-	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
+	<bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		depends-on="dataSourceInitializer"> 
 		<!-- No need for this, because we do not use persistence.xml -->
 <!-- 		<property name="persistenceUnitManager"> -->
 <!-- 			<bean id="pum" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager"> -->
@@ -61,6 +62,7 @@
 <!-- 				<entry key="hibernate.show_sql" value="${hibernate.show_sql}" /> -->
 				<entry key="hibernate.format_sql" value="${hibernate.format_sql}" />
 				<entry key="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl.auto}" />
+				<entry key="hibernate.id.new_generator_mappings" value="${hibernate.id.new_generator_mappings=true}" />
 			</map>
 		</property>
 		<property name="packagesToScan">

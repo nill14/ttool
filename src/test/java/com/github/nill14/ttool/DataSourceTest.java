@@ -22,7 +22,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations="classpath:/spring/applicationContext.xml")
+@ContextConfiguration(locations="classpath:/spring/applicationContext-test.xml")
 public class DataSourceTest {
 
 	@Rule
@@ -41,8 +41,8 @@ public class DataSourceTest {
 	public void testCount() {
 		
 		Integer regionsCount = jdbcTemplate.queryForObject("SELECT count(*) FROM regions", Integer.class);
-		assertTrue(regionsCount != null);
-		assertTrue(regionsCount > 0);
+		assertTrue("regionsCount != null", regionsCount != null);
+		assertTrue("regionsCount > 0", regionsCount > 0);
 	}
 	
 	@Test
@@ -63,10 +63,10 @@ public class DataSourceTest {
 	@Test
 	public void testRowSet2() {
 	
-		Object[] params = new Object[] { "CZ" };
+		Object[] params = new Object[] { "CA" };
 		SqlRowSet rowSet = jdbcTemplate.queryForRowSet("SELECT * FROM countries WHERE CountryISOCode = ?", params);
 			
-		assertTrue(rowSet.next());
+		assertTrue("Has next", rowSet.next());
 		
 		String isoCode = rowSet.getString("CountryISOCode");
 		assertTrue(isoCode != null);

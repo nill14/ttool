@@ -1,43 +1,41 @@
 package com.github.nill14.ttool.entity;
 
-import java.util.Collection;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "regions")
+@Table(name = "Regions")
+@SequenceGenerator(name = "SEQ_Regions", sequenceName = "SEQ_Regions")
 public class Region {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	@Column(name = "RegionId")
-	private long regionId;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_Regions")
+	private int regionId;
 
 	@NotNull
-	@Column(name = "RegionName")
+	@Column(name = "regionName")
 	private String name;
 	
 	
-	@OneToMany
-	@JoinColumn(name = "RegionId")
-	private Collection<Country> countries;
-	
-	
-	
+	@OneToMany(mappedBy = "region")
+	@MapKey(name = "isoCode")
+	private Map<String, Country> countries;
 
-	public long getRegionId() {
+	public int getRegionId() {
 		return regionId;
 	}
 
-	public void setRegionId(long regionId) {
+	public void setRegionId(int regionId) {
 		this.regionId = regionId;
 	}
 
@@ -49,14 +47,13 @@ public class Region {
 		this.name = regionName;
 	}
 
-	public Collection<Country> getCountries() {
+	public Map<String, Country> getCountries() {
 		return countries;
 	}
 
-	public void setCountries(Collection<Country> countries) {
+	public void setCountries(Map<String, Country> countries) {
 		this.countries = countries;
 	}
-	
 	
 	
 }

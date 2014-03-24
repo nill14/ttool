@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-	<context:property-placeholder location="classpath:/spring/jdbc.properties" ignore-unresolvable="true" />
+	<context:property-placeholder location="classpath:/spring/jdbc-test.properties" ignore-unresolvable="true" />
 	
 	
 	<!-- H2 Database server -->
@@ -18,10 +18,19 @@
 <!-- 		<constructor-arg value="-tcp,-tcpPort,8043,-trace" /> -->
 <!-- 	</bean>  -->
 	
-	<jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="classpath:/data/schema.sql" />
-		<jdbc:script location="classpath:/data/testData.sql" />
-	</jdbc:initialize-database>
+	<bean id="dataSourceInitializer" class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="databasePopulator">
+			<bean class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator">
+				<property name="scripts">
+					<array>
+						<value>classpath:/data/schema-test.sql</value>
+						<value>classpath:/data/initData-test.sql</value>
+					</array>
+				</property>
+			</bean>
+		</property>
+	</bean>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -30,5 +39,7 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	
+	
 
 </beans>
