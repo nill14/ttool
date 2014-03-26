@@ -30,6 +30,7 @@
 
 	<dependencies>
 
+<!-- 		Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -74,6 +75,7 @@
 			<version>1.4.5.RELEASE</version>
 		</dependency>		
 
+<!-- 		Logging dependencies  -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -96,6 +98,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+<!-- 		Database dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.4.Final</version>
+		</dependency>		
+		
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -103,18 +112,12 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.4.Final</version>
-		</dependency>		
-
-
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.3.175</version>
 		</dependency>
 
+<!-- 		Testing dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -127,67 +130,77 @@
 			<scope>test</scope>
 		</dependency>		
 
+<!-- 		Other dependencies -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>16.0.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>		
 		
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.6</version>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>		
+		
+<!-- 		JSF dependencies -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
 			<version>2.2.6</version>
-		</dependency>
+			<scope>runtime</scope>
+		</dependency>		
+
+<!-- 		Web dependencies -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.el</groupId>
-			<artifactId>el-ri</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>el-api</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<version>2.2</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet</groupId> -->
+<!-- 			<artifactId>jstl</artifactId> -->
+<!-- 			<version>1.2</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet.jsp</groupId> -->
+<!-- 			<artifactId>javax.servlet.jsp-api</artifactId> -->
+<!-- 			<version>2.3.1</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.sun.el</groupId> -->
+<!-- 			<artifactId>el-ri</artifactId> -->
+<!-- 			<version>1.0</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.el</groupId> -->
+<!-- 			<artifactId>el-api</artifactId> -->
+<!-- 			<version>2.2</version> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.glassfish.web</groupId> -->
+<!-- 			<artifactId>el-impl</artifactId> -->
+<!-- 			<version>2.2</version> -->
+<!-- 		</dependency> -->
 
 
 
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>
+
 
 
 	</dependencies>
@@ -201,6 +214,16 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+<!-- 					mvn tomcat7:deploy-only -->
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcat-local</server>
 				</configuration>
 			</plugin>
 		</plugins>

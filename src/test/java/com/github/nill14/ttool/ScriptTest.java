@@ -4,7 +4,7 @@ package com.github.nill14.ttool;
  */
 
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import javax.sql.DataSource;
 
@@ -42,9 +42,10 @@ public class ScriptTest {
 		
 		SqlRowSet rowSet = jdbcTemplate.queryForRowSet("SCRIPT NODATA TO 'HR-script.sql'");
 		while(rowSet.next()) {
-			String str = rowSet.getString(1);
-			System.out.println(str);
+			/*String str = */rowSet.getString(1);
+//			System.out.println(str);
 		}
+		assertTrue(true);
 	}
 	
 	

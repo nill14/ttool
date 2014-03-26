@@ -1,4 +1,4 @@
-package de.vogella.jsf.first.model;
+package com.github.nill14.ttool.mbean;
 
 public class TemperatureConvertor {
   private double celsius; 
