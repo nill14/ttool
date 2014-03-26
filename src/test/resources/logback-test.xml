@@ -26,7 +26,7 @@
   	<appender-ref ref="STDOUT" />
   </logger>
 <!--   https://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-logging -->
-  <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+  <logger name="org.hibernate.SQL" level="INFO" additivity="false">
   	<appender-ref ref="STDOUT" />
   </logger>  
   <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG" additivity="false">

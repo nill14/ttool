@@ -22,7 +22,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations="classpath:/spring/applicationContext-test.xml")
+@ContextConfiguration(locations="classpath:/spring/applicationContext.xml")
 public class ScriptTest {
 
 	@Rule

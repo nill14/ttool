@@ -22,7 +22,7 @@ import com.github.nill14.ttool.entity.Country;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations="classpath:/spring/applicationContext-test.xml")
+@ContextConfiguration(locations="classpath:/spring/applicationContext.xml")
 public class DataRepoTest {
 
 	@Inject
