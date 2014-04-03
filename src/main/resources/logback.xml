@@ -2,6 +2,9 @@
 
 <configuration debug="false">
     
+  <!-- Configuration properties file -->
+  <property resource="logback.properties" />    
+    
   <!-- Standard console appender configuration -->
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -10,6 +13,19 @@
     </encoder>
   </appender>
 
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${logDir}/${logFilename}.txt</file>   
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover  -->
+      <fileNamePattern>${logdir}/${logfilename}_log.%d{yyyy-MM-dd}.txt</fileNamePattern>
+	  <!-- keep 5 days' worth of history -->
+      <maxHistory>5</maxHistory>
+    </rollingPolicy>
+    <!-- encoder for file appender -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread]: %class{30} - %msg%n</pattern>
+    </encoder>
+  </appender>
   
 
   
@@ -24,31 +40,39 @@
 <!--   </logger> -->
   <logger name="org.springframework" level="INFO" additivity="false">
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger>
 <!--   https://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-logging -->
   <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger>  
   <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG" additivity="false">
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger> 
   <logger name="org.hibernate.transaction" level="DEBUG" additivity="false">
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger>     
   <logger name="org.hibernate" level="INFO" additivity="false">
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger>
   <logger name="ch.qos.logback" level="WARN" additivity="false">
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger>  
   
   <!-- project logger -->
   <logger name="com.github.nill14.ttool" level="DEBUG" additivity="false">  	
   	<appender-ref ref="STDOUT" />
+  	<appender-ref ref="FILE" />
   </logger>
   
   <root level="DEBUG">
 	<appender-ref ref="STDOUT" />
+	<appender-ref ref="FILE" />
   </root>   
   
 </configuration>

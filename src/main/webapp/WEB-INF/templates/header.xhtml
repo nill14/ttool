@@ -4,7 +4,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <body>
 	<ui:composition>
-		<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">My Facelet Application</div>
+		<div>My Facelet Application</div>
+
+		<div id="menu">
+			<ui:insert name="menu">
+				<ui:include src="/WEB-INF/templates/menu.xhtml"/>
+			</ui:insert>
+		</div>	
 	
 	</ui:composition>
 </body>

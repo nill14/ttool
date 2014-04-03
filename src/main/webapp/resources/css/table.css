@@ -1,0 +1,35 @@
+@CHARSET "ISO-8859-1";
+
+.table {   
+	border-collapse:collapse;
+/* 	border: 1px dashed black; */
+	
+}
+ 
+th.table-header {
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border:1px solid black;
+	padding: 6pt;
+}
+ 
+.table-odd-row {
+	text-align:center;
+	background:none repeat scroll 0 0 #FFFFFFF;
+}
+ 
+.table-even-row {
+	text-align:center;
+	background:none repeat scroll 0 0 #F9F9F9;
+
+}
+
+.table td {
+	border-left:1px solid black;
+	border-right:1px solid black;
+	padding: 2pt 6pt;
+}
+
+.table tr:last-child td {
+	border-bottom:1px solid black;
+}
