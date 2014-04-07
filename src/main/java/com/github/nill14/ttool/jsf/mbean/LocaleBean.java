@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
@@ -38,46 +39,46 @@ public class LocaleBean implements Serializable {
 	
 	private List<String> languages; 
 	
-	private String displayLanguage;
+	private Locale locale;
 
-	public LocaleBean() {
-		updateLanguages();
-	}
+    @PostConstruct
+    public void init() {
+        locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+        updateLanguages();
+    }
+	
 
 	public List<String> getLanguages() {
 		return languages;
 	}
 	
 	public String getDisplayLanguage() {
-		if(displayLanguage == null) {
-			final Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-			displayLanguage = locale.getDisplayLanguage();
-		}
-		
-		return displayLanguage;
+		return locale.getDisplayLanguage(locale);
 	}
 
 	public void setDisplayLanguage(String displayLanguage) {
-		this.displayLanguage = displayLanguage;
+		log.debug("New language: {}", displayLanguage);
+
+		if (index.containsKey(displayLanguage)) {
+			Locale newLocale = index.get(displayLanguage);
+			switchLocale(newLocale);
+		}
+	}
+	
+	public String getLanguage() {
+		return locale.getLanguage(); //lang code
 	}
 
 	// value change event listener
 	public void languageChanged(ValueChangeEvent e) {
-
 		String newLanguage = e.getNewValue().toString();
-		log.debug("New language: {}", newLanguage);
-
-		if (index.containsKey(newLanguage)) {
-			Locale newLocale = index.get(newLanguage);
-			this.displayLanguage = newLanguage;
-			switchLocale(newLocale);
-		}
-		
+		setDisplayLanguage(newLanguage);
 	}
 	
 	private void switchLocale(Locale newLocale) {
-		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-		log.info("Switching locale from {} to {}", locale, newLocale);
+		if (this.locale.equals(newLocale)) return;
+		log.info("Switching locale from {} to {}", this.locale, newLocale);
+		this.locale = newLocale;
 		FacesContext.getCurrentInstance().getViewRoot().setLocale(newLocale);
 	}
 	
