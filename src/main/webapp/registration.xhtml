@@ -7,12 +7,12 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
 	<ui:define name="content">
 	
-	    <h:outputLabel value="Welcome #{loginBean.username}"></h:outputLabel>
-	    
-	    <p>Add your content here or delete to use the default</p>
-	    		<p>Add your content here or delete to use the default 
+		<ui:include src="/WEB-INF/templates/registrationPanel.xhtml" />
+		
+		<p>Add your content here or delete to use the default 
 Հայերեն Shqip ‫العربية‫العربية   Български Català Hrvatski Česky Dansk Nederlands English
 Eesti Suomi Français ქართული Deutsch Ελληνικά ‫עברית‫עברית   Magyar Indonesia Italiano
 Latviski Lietuviškai македонски Melayu Norsk Polski Português Româna Pyccкий
@@ -35,16 +35,13 @@ Suspendisse nunc nibh, sodales at nisl ut, eleifend bibendum eros. Etiam pellent
 Nulla malesuada, orci eget consectetur adipiscing, dui nibh dictum eros, vitae egestas nulla ligula nec est. Fusce tincidunt dui enim, vitae pellentesque est interdum nec. In nunc purus, rhoncus eget egestas non, vehicula vitae ipsum. Maecenas ultricies velit dolor, eu laoreet nisi ullamcorper non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec fermentum molestie laoreet. Nulla malesuada velit ut metus volutpat dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus scelerisque molestie eros vel ornare. Aenean consequat eget orci eu fermentum.
 Generated 5 paragraphs, 494 words, 3382 bytes of Lorem Ipsum
 		</p>
-	</ui:define>
-	
-	<ui:define name="menu">
-		<ul>
-			<li><a href="welcome.xhtml">Welcome</a></li>
-			<li><a href="table.xhtml">Table</a></li>
-			<li><a href="countries.xhtml">Countries</a></li>
-		</ul>	
-	</ui:define>
-	
-</ui:composition>
+		
 
+	</ui:define>
+<!-- 	<ui:define name="footer"> -->
+<!-- 	    Add your footer here or delete to use the default -->
+<!-- 	</ui:define> -->
+
+<!-- 	<ui:define name="menu"></ui:define> -->
+</ui:composition>
 </html>

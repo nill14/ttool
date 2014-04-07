@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition>
+	<h:form prependId="false">
+		<p:panel id="registrationPanel" header="#{logMsg.REGISTRATION}" styleClass="pack">
+			<p:messages id="msgs"/>  
+		
+			<h:panelGrid columns="3">
+				
+				<h:outputLabel for="username" value="#{logMsg.USERNAME}: *"/>
+				<h:inputText id="username" value="#{registrationBean.username}" required="true" label="#{logMsg.USERNAME}">
+					<f:validateRequired/> 
+					<p:ajax listener="#{registrationBean.validateUsername}" update="msgUsername" event="keyup" />
+				</h:inputText>
+				<p:message for="username" id="msgUsername" display="icon"/> 
+				
+				<h:outputLabel for="passwd" value="#{logMsg.PASSWD}: *"/>
+				<h:inputSecret id="passwd" value="#{registrationBean.password}" label="Password">
+					<f:validateLength minimum="5" maximum="25"/>
+				</h:inputSecret>
+				<p:message for="passwd" display="icon"/>
+				
+				<h:outputLabel for="verifyPasswd" value="#{logMsg.VERIFY_PASSWD}: *"/>
+				<h:inputSecret id="verifyPasswd" value="#{registrationBean.verifyPassword}">
+				</h:inputSecret>
+				<p:message for="verifyPasswd" display="icon"/>
+				
+				<h:outputLabel for="email" value="#{logMsg.EMAIL} *"/>
+				<h:inputText id="email" value="#{registrationBean.email}" size="40">
+<!-- 					<f:validateBean /> -->
+				</h:inputText>
+				<p:message for="email" id="msgEmail" display="icon"/>
+				
+			</h:panelGrid>		
+
+			<h:commandButton value="Register" update="registrationPanel" action="#{registrationBean.register}"/>
+		</p:panel>
+	</h:form>
+	
+</ui:composition>
+</html>

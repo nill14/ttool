@@ -25,6 +25,8 @@ html {
 	position: fixed;
 	left: 0;
 	bottom: 0;
+	padding-top: 2pt;
+	padding-bottom: 10pt;
 }
 
 #content {
@@ -38,7 +40,7 @@ html {
 	background-color: Teal;
 }
 
-#content div {
+#content>div {
 	display: table;
 /* 	text-align: center; */
 /* 	border: 1px dotted black; */
@@ -46,22 +48,24 @@ html {
 	margin-right: auto;
 }
 
+div.pack {
+	display: table;
+}
 
-#loginForm table {
+#loginPanel {
 	float: right;
 	margin-left: 36pt;
 	margin-top: 36pt;
 	margin-right: 15%;
 	margin-bottom: 36pt;
+	display: table;
 /* 	border: 1px dotted black; */
 }
 
-#loginForm input[type="submit"] {
+div.pack input[type="submit"] {
 	float: right;
-  	background: #fff;
-  	border: 1px solid black;
-  	text-shadow: 1px 1px 1px black;
-  	text-align: right;
+	margin-top: 12pt;
+	margin-bottom: 6pt;
 }
 
 #menu {
@@ -69,7 +73,6 @@ html {
 	bottom: 0;
 	right: 0;
 /* 	float: left; */
-/* 	z-index: -10000; */
 }
 
 #menu ul {
@@ -84,7 +87,7 @@ html {
 /* display: inline-block; */
 }
 
-#menu a:link,a:visited {
+#menu a:link, #menu a:visited {
 	display: block;
 	width: 120px;
 	text-align: center;
@@ -96,7 +99,8 @@ html {
 	text-transform: capitalize;
 }
 
-#menu a:hover,a:active {
+#menu a:hover, #menu a:active {
 	background-color: DimGray;
 }
+
 

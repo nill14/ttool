@@ -3,27 +3,27 @@
     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
+    version="2.2" metadata-complete="true">
     
     <application>
     	<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    	
+    	<locale-config>
+    		<default-locale>en</default-locale>
+    		<supported-locale>en</supported-locale>
+    		<supported-locale>cs</supported-locale>
+    	</locale-config>
+    	<resource-bundle>
+    		<base-name>com.github.nill14.ttool.Messages</base-name>
+    		<var>msg</var>
+    	</resource-bundle>
+    	<resource-bundle>
+    		<base-name>com.github.nill14.ttool.LoginMessages</base-name>
+    		<var>logMsg</var>
+    	</resource-bundle>
+    	
     </application>
     
-	<managed-bean>
-		<managed-bean-name>loginBean</managed-bean-name>
-		<managed-bean-class>com.github.nill14.ttool.mbean.LoginBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
-	<navigation-rule>
-		<display-name>/login.xhtml</display-name>
-		<from-view-id>/login.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>login</from-outcome>
-			<to-view-id>/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	
-	
-
+    
+    
 </faces-config>

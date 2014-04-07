@@ -1,8 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13953366316431" configfile="/ttool/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="/templates/login.xhtml" x="122" y="178" id="pf13957434058803" referenceLink="//@navigationRule.0/@fromViewId|" path="/templates/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="templates/welcome.xhtml" x="122" y="562" id="pf13957434058805" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/templates/welcome.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="/login.xhtml" x="122" y="946" id="pf13958286796156" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13958286796157" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" x="338" y="946" id="pf13958286796158" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13958286796157" path="/welcome.xhtml"/>
-  <links id="pf13958286796157" target="pf13958286796158" source="pf13958286796156" outcome="login"/>
-</pageflow:Pageflow>
+<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13953366316431" configfile="/ttool/src/main/webapp/WEB-INF/faces-config.xml"/>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition>
+	<h:form prependId="false">
+		<p:panel id="loginPanel" header="#{logMsg.LOGIN_HEADER}" styleClass="pack">
+			<h:panelGrid columns="2">
+				
+				<h:outputLabel for="username" value="#{logMsg.USERNAME}"/>
+				<h:inputText id="username" value="#{loginBean.username}" required="true" />
+				
+				<h:outputLabel for="passwd" value="#{logMsg.PASSWD}"/>
+				<h:inputSecret id="passwd" value="#{loginBean.password}"/>
+				
+				<h:link value="#{logMsg.REGISTRATION}" outcome="/registration"/>
+				<h:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}"/>
+			
+			</h:panelGrid>		
+		</p:panel>
+	</h:form>
+	
+</ui:composition>
+</html>

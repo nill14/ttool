@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-	<ui:composition>
-		<div>Footer</div>
-	</ui:composition>
-</body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+	<h:form>
+	
+		<h:panelGrid columns="2">
+	 
+			<h:outputLabel for="" value="#{msg.LANG}: "></h:outputLabel> 
+			<h:selectOneMenu value="#{localeBean.displayLanguage}" onchange="submit()"
+				valueChangeListener="#{localeBean.languageChanged}">
+				<f:selectItems value="#{localeBean.languages}" />
+			</h:selectOneMenu>
+	
+		</h:panelGrid>
+		
+	</h:form>
+</ui:composition>
 </html>

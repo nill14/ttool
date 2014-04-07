@@ -13,6 +13,16 @@
 	</context-param>	
 	
 	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>		
+	
+	<context-param>
+		<param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+		<param-value>true</param-value>
+	</context-param>			
+	
+	<context-param>
 	    <param-name>contextConfigLocation</param-name>
 	    <param-value>classpath:/spring/applicationContext.xml</param-value>
 <!-- 	    <param-value>/WEB-INF/applicationContext*.xml</param-value> -->
@@ -26,11 +36,6 @@
 		<listener-class>com.github.nill14.ttool.servlet.listener.Slf4JInitServletContextListener</listener-class>
 	</listener>	
 
-<!-- 	<context-param> -->
-<!-- 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name> -->
-<!-- 		<param-value>.xhtml</param-value> -->
-<!-- 	</context-param>	 -->
-	
 	<!-- Welcome page -->
 	<welcome-file-list>
 		<welcome-file>login.xhtml</welcome-file>

@@ -5,51 +5,44 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       >
-      
       
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	
-	<ui:define name="title">Table</ui:define>
+	<ui:define name="title">Countries</ui:define>
 	<ui:define name="styles">
 		<h:outputStylesheet library="css" name="template.css"/>
   		<h:outputStylesheet library="css" name="table.css"/>
 	</ui:define>	
 
 	<ui:define name="content">
-    	<h:form prependId="false">
+    	<h1>JSF2 dataTable example</h1>
     	
-	    	<p:dataTable id="dataTable"
-	    			value="#{tableBean.cars}" var="o" 
-	    			paginator="true" rows="10"  
-	    			sortMode="multiple"
-	                rowsPerPageTemplate="5,10,15">
-	    		
-	    		<p:column sortBy="model" headerText="Model">
-	    			#{o.model} 
-	    		</p:column>
-	    		
-	    		<p:column sortBy="year" headerText="Year">
-	    			#{o.year}
-	    		</p:column>
-	    		
-	    		<p:column sortBy="manufacturer" headerText="Manufacturer">
-	    			#{o.manufacturer}
-	    		</p:column>
-	    		
-	    		<p:column sortBy="color" headerText="Color">
-	    			#{o.color}
-	    		</p:column>
-	    		
-	    		
-	    	
-	    	</p:dataTable>
+    	<h:dataTable value="#{countryService.allCountries}" var="o" 
+    			styleClass="table" headerClass="table-header"
+    			rowClasses="table-odd-row,table-even-row">
+    			
+    			
+    		<h:column>
+    			<!-- column header -->
+    			<f:facet name="header">ISO Code</f:facet>
+    			<!-- row record -->
+    			#{o.isoCode}
+    		</h:column>
+    		
+    		<h:column>
+    			<f:facet name="header">Country Name</f:facet>
+    			#{o.name}
+    		</h:column>
+    		
+    		<h:column>
+    			<f:facet name="header">Region</f:facet>
+    			#{o.region.name}
+    		</h:column>
+    		
+    		
     	
-    	
-    	</h:form>
-    	
-    	
+    	</h:dataTable>
     
 	</ui:define>
 	
@@ -62,4 +55,4 @@
 	</ui:define>	
 
 </ui:composition>      
-</html>
+</html>      

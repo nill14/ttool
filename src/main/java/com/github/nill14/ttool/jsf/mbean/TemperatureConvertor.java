@@ -1,4 +1,4 @@
-package com.github.nill14.ttool.mbean;
+package com.github.nill14.ttool.jsf.mbean;
 
 public class TemperatureConvertor {
   private double celsius; 

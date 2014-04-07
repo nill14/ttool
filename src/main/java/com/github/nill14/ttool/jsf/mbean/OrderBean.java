@@ -1,11 +1,13 @@
-package com.github.nill14.ttool.mbean;
+package com.github.nill14.ttool.jsf.mbean;
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
+import org.springframework.context.annotation.Scope;
  
 @ManagedBean(name="order")
-@SessionScoped
+@Scope("session")
 public class OrderBean implements Serializable{
  
 	private static final long serialVersionUID = 1L;

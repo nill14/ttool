@@ -128,7 +128,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>	
 
 <!-- 		Other dependencies -->
 		<dependency>
@@ -199,10 +205,26 @@
 <!-- 		</dependency> -->
 
 
+		<dependency>  
+		    <groupId>org.primefaces</groupId>  
+		    <artifactId>primefaces</artifactId>  
+		    <version>4.0</version>  
+		</dependency>
 
 
 
-
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>
+				hibernate-validator-annotation-processor
+			</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
 	</dependencies>
 
 
@@ -239,6 +261,12 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+	    <repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>  
+	    </repository>  		
 	</repositories>
 
 	<pluginRepositories>
