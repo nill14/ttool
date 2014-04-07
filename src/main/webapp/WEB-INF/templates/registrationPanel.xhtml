@@ -31,7 +31,7 @@
 				</h:inputSecret>
 				<p:message for="verifyPasswd" display="icon"/>
 				
-				<h:outputLabel for="email" value="#{logMsg.EMAIL} *"/>
+				<h:outputLabel for="email" value="#{logMsg.EMAIL}: *"/>
 				<h:inputText id="email" value="#{registrationBean.email}" size="40">
 <!-- 					<f:validateBean /> -->
 				</h:inputText>
@@ -39,7 +39,7 @@
 				
 			</h:panelGrid>		
 
-			<h:commandButton value="Register" update="registrationPanel" action="#{registrationBean.register}"/>
+			<h:commandButton value="#{logMsg.REGISTER}" update="registrationPanel" action="#{registrationBean.register}"/>
 		</p:panel>
 	</h:form>
 	

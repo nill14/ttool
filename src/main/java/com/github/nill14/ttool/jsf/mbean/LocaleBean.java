@@ -25,8 +25,6 @@ public class LocaleBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = LoggerFactory.getLogger(LocaleBean.class);
 
-	private String displayLanguage;
-
 	private static ImmutableList<Locale> locales = ImmutableList.of(
 			Locale.ENGLISH, 
 			Locale.GERMAN,
@@ -40,6 +38,8 @@ public class LocaleBean implements Serializable {
 	
 	private List<String> languages; 
 	
+	private String displayLanguage;
+
 	public LocaleBean() {
 		updateLanguages();
 	}
@@ -79,7 +79,6 @@ public class LocaleBean implements Serializable {
 		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 		log.info("Switching locale from {} to {}", locale, newLocale);
 		FacesContext.getCurrentInstance().getViewRoot().setLocale(newLocale);
-		updateLanguages();
 	}
 	
 	private final void updateLanguages() {
