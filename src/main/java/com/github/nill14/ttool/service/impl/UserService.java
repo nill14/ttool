@@ -27,7 +27,8 @@ public class UserService implements IUserService {
 	public boolean validateLogin(String username, String password) {
 		User user = repo.findByUsername(username);
 		if (user != null) {
-			return hash(password).equals(user.getPasswd());
+			boolean equalsPassword = hash(password).equals(user.getPasswd());
+			return equalsPassword && user.isActivated() && !user.isDisabled();
 		}
 		return false;
 	}
@@ -52,6 +53,8 @@ public class UserService implements IUserService {
 		user.setUsername(username);
 		user.setPasswd(hash(password));
 		user.setEmail(email);
+		user.setDisabled(false);
+		user.setActivated(false);
 		
 		return repo.save(user);
 	}

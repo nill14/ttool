@@ -26,6 +26,12 @@ public class User {
 	
 	@Column
 	private String email;
+	
+	@Column(nullable = false)
+	private boolean activated = false;
+	
+	@Column(nullable = false)
+	private boolean disabled = false;
 
 	public String getUserId() {
 		return userId;
@@ -57,6 +63,22 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean isActivated() {
+		return activated;
+	}
+
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
 	}
 	
 	
