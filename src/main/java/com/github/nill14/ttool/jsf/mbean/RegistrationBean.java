@@ -22,10 +22,9 @@ public class RegistrationBean implements Serializable
 	private static final long serialVersionUID = -9040217024800473940L;
 
 	private String username;
-	private String usernameValidation;
 	
     private String password;
-    private String verifyPassword;
+    private String confirmPassword;
     
 //    @Pattern(regexp="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\b")
     @Email
@@ -35,34 +34,16 @@ public class RegistrationBean implements Serializable
     private transient IUserService service;
     
     public void validateUsername() {
-    	service.getUsernames().contains(username);
     }
     
 
     public String register() {
-    	boolean validUsername = !service.getUsernames().contains(username);
-    	boolean validPassword = password != null && password.length() >= 6 &&
-    			password.equals(verifyPassword);
-    	boolean validEmail = java.util.regex.Pattern.compile("\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\b")
-    			.matcher(email).matches();
-    	
-    	validEmail = validPassword = true;
-    	
-    	boolean success = validUsername && validPassword && validEmail;
-    	System.out.println(validUsername);
-    	System.out.println(validPassword);
-    	System.out.println(validEmail);
     	
     	
-    	if (success) {
     		service.createUser(username, password, email);
     		log.debug("registration({}) succeeded", username);
     		return "/welcome?faces-redirect=true";
     	
-    	} else {
-    		log.warn("registration(username={}) failed", username);
-    		return "/registration";
-    	}
     }
 
 
@@ -91,15 +72,6 @@ public class RegistrationBean implements Serializable
 
 
 
-	public String getVerifyPassword() {
-		return verifyPassword;
-	}
-
-
-
-	public void setVerifyPassword(String verifyPassword) {
-		this.verifyPassword = verifyPassword;
-	}
 
 
 
@@ -111,6 +83,16 @@ public class RegistrationBean implements Serializable
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 

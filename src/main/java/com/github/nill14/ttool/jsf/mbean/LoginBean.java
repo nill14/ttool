@@ -24,7 +24,7 @@ public class LoginBean implements Serializable
     private String password;
     
     @Inject
-    private IUserService service;
+    private transient IUserService service;
     
     
 	public String getUsername() {

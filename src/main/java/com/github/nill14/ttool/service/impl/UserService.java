@@ -1,7 +1,5 @@
 package com.github.nill14.ttool.service.impl;
 
-import java.util.Set;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -15,13 +13,15 @@ import com.google.common.hash.Hashing;
 @Service
 public class UserService implements IUserService {
 
+	
 	@Inject
 	private UserRepository repo; 
 	
 	@Override
-	public Set<String> getUsernames() {
-		return repo.findAllUsernames();
+	public boolean isUsernameDuplicated(String username) {
+		return repo.findByUsername(username) != null;
 	}
+	
 
 	@Override
 	public boolean validateLogin(String username, String password) {

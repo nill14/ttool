@@ -13,28 +13,37 @@
 		
 			<h:panelGrid columns="3">
 				
-				<h:outputLabel for="username" value="#{logMsg.USERNAME}: *"/>
-				<h:inputText id="username" value="#{registrationBean.username}" required="true" label="#{logMsg.USERNAME}">
-					<f:validateRequired/> 
-					<p:ajax listener="#{registrationBean.validateUsername}" update="msgUsername" event="keyup" />
-				</h:inputText>
+				<p:outputLabel for="username" value="#{logMsg.USERNAME}:"/>
+				<p:inputText id="username" value="#{registrationBean.username}" required="true" label="#{logMsg.USERNAME}">
+					<f:validator binding="#{usernameValidator}"/>
+				</p:inputText>
 				<p:message for="username" id="msgUsername" display="icon"/> 
 				
-				<h:outputLabel for="passwd" value="#{logMsg.PASSWD}: *"/>
-				<h:inputSecret id="passwd" value="#{registrationBean.password}" label="Password">
+				<p:outputLabel for="password" value="#{logMsg.PASSWD}:"/>
+				<p:password id="password" value="#{registrationBean.password}" 
+						feedback="false" inline="false" immediate="true"
+						label="#{logMsg.PASSWD}" required="true">
+					
 					<f:validateLength minimum="5" maximum="25"/>
-				</h:inputSecret>
-				<p:message for="passwd" display="icon"/>
+					<p:ajax update="msgPassword" event="keyup" />
+				</p:password>
+				<p:message for="password" id="msgPassword" display="icon"/>
 				
-				<h:outputLabel for="verifyPasswd" value="#{logMsg.VERIFY_PASSWD}: *"/>
-				<h:inputSecret id="verifyPasswd" value="#{registrationBean.verifyPassword}">
-				</h:inputSecret>
-				<p:message for="verifyPasswd" display="icon"/>
+				<p:outputLabel for="confirmPassword" value="#{logMsg.CONFIRM_PASSWD}:"/>
+				<p:password id="confirmPassword" value="#{registrationBean.confirmPassword}" 
+						label="#{logMsg.CONFIRM_PASSWD}" required="true" match="password"
+						immediate="true">
+					
+					<p:ajax update="msgConfirmPassword" event="keyup" /> 
+				</p:password>
+				<p:message for="confirmPassword" id="msgConfirmPassword" display="icon"/>
 				
-				<h:outputLabel for="email" value="#{logMsg.EMAIL}: *"/>
-				<h:inputText id="email" value="#{registrationBean.email}" size="40">
-<!-- 					<f:validateBean /> -->
-				</h:inputText>
+				<p:outputLabel for="email" value="#{logMsg.EMAIL}:"/>
+				<p:inputText id="email" value="#{registrationBean.email}" size="40" 
+						required="true" label="#{logMsg.EMAIL}">
+<!-- 					<f:validateBean  /> -->
+					<p:ajax update="msgEmail" event="keyup" />
+				</p:inputText>
 				<p:message for="email" id="msgEmail" display="icon"/>
 				
 			</h:panelGrid>		

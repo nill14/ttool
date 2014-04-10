@@ -6,11 +6,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<f:view locale="#{localeBean.language}">
+<f:view contentType="text/html" locale="#{localeBean.language}">
 	<h:head>
 		<title><ui:insert name="title">ttool</ui:insert></title>
 		 
-		 	<ui:insert name="styles">
+	 	<ui:insert name="styles">
 			<h:outputStylesheet library="css" name="template.css"/>
 		 
 		 </ui:insert>

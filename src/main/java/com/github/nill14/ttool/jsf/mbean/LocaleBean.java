@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
@@ -43,7 +44,9 @@ public class LocaleBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+		UIViewRoot viewRoot = facesContext.getViewRoot();
+		locale = viewRoot.getLocale();
         updateLanguages();
     }
 	

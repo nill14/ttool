@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+	
+<ui:composition>
+	<h:form prependId="false" id="mapForm">
+	
+		<p:growl id="messages" showDetail="true" />  
+
+		<p:panel id="mapPanel" header="Map">
+		    <p:menubar>  
+		        <p:submenu label="Layers">  
+		            <p:menuitem value="Item 1" url="#" />
+		            <p:menuitem value="Item 2" url="#" />
+		            <p:menuitem value="Item 3" url="#" />  
+		            <p:separator />  
+		            <p:menuitem value="Quit" url="#" />  
+		        </p:submenu>  
+		  
+		        <f:facet name="options">  
+		            <p:inputText style="margin-right:10px"/>  
+		            <p:commandButton type="button" value="Search" icon="ui-icon-extlink" />  
+		        </f:facet>  
+		    </p:menubar>  
+	
+			<h:panelGrid columns="2">
+			    <p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID" 
+			    		model="#{mapBean.simpleModel}"
+			    		style="width:600px;height:800px">
+			 
+			        <p:ajax event="stateChange" listener="#{mapBean.onStateChange}" update="messages" />
+			        <p:ajax event="pointSelect" listener="#{mapBean.onPointSelect}" update="messages" />
+			        <p:ajax event="overlaySelect" listener="#{mapBean.onMarkerSelect}" process="@form" update="detailPanel" />
+			 
+			    </p:gmap>
+			
+				<ui:include src="#{mapBean.detailPanel}"/>
+			
+			</h:panelGrid>
+ 
+		    
+		    
+ 
+
+		</p:panel>
+	</h:form>
+	
+</ui:composition>
+</html>

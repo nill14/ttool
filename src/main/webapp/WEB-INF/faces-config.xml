@@ -12,6 +12,7 @@
     		<default-locale>en</default-locale>
     		<supported-locale>en</supported-locale>
     		<supported-locale>cs</supported-locale>
+    		<supported-locale>de</supported-locale>
     	</locale-config>
     	<resource-bundle>
     		<base-name>com.github.nill14.ttool.Messages</base-name>
@@ -21,6 +22,8 @@
     		<base-name>com.github.nill14.ttool.LoginMessages</base-name>
     		<var>logMsg</var>
     	</resource-bundle>
+    	
+    	<message-bundle>com.github.nill14.ttool.FacesMessages</message-bundle>
     	
     </application>
     

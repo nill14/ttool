@@ -18,6 +18,8 @@
 	
 	<bean id="tableBean" class="org.primefaces.examples.view.TableBean" scope="session"/>	
 	<context:component-scan base-package="com.github.nill14.ttool.jsf.mbean"/>
+	<context:component-scan base-package="com.github.nill14.ttool.jsf.validator"/>
+
 	
 </beans>
 
