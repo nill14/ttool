@@ -35,6 +35,10 @@
   	<listener>
 		<listener-class>com.github.nill14.ttool.servlet.listener.Slf4JInitServletContextListener</listener-class>
 	</listener>	
+	
+  	<listener>
+		<listener-class>com.github.nill14.ttool.servlet.listener.FacesContextBootstrap</listener-class>
+	</listener>		
 
 	<!-- Welcome page -->
 	<welcome-file-list>

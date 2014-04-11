@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.slf4j.Logger;
@@ -23,10 +24,9 @@ public class RegistrationBean implements Serializable
 
 	private String username;
 	
+	@Size(min=5, max=25)
     private String password;
-    private String confirmPassword;
     
-//    @Pattern(regexp="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\b")
     @Email
     private String email;
     
@@ -39,11 +39,9 @@ public class RegistrationBean implements Serializable
 
     public String register() {
     	
-    	
-    		service.createUser(username, password, email);
-    		log.debug("registration({}) succeeded", username);
-    		return "/welcome?faces-redirect=true";
-    	
+		service.createUser(username, password, email);
+		log.debug("registration({}) succeeded", username);
+		return "/welcome?faces-redirect=true";
     }
 
 
@@ -85,15 +83,6 @@ public class RegistrationBean implements Serializable
 		this.email = email;
 	}
 
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
 
 
 }
