@@ -155,6 +155,12 @@
 			<version>1.1.0.Final</version>
 		</dependency>		
 		
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.2</version>
+		</dependency>		
+		
 <!-- 		JSF dependencies -->
 		<dependency>
 			<groupId>javax.faces</groupId>
@@ -176,34 +182,6 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet</groupId> -->
-<!-- 			<artifactId>jstl</artifactId> -->
-<!-- 			<version>1.2</version> -->
-<!-- 		</dependency> -->
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet.jsp</groupId> -->
-<!-- 			<artifactId>javax.servlet.jsp-api</artifactId> -->
-<!-- 			<version>2.3.1</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.sun.el</groupId> -->
-<!-- 			<artifactId>el-ri</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.el</groupId> -->
-<!-- 			<artifactId>el-api</artifactId> -->
-<!-- 			<version>2.2</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.glassfish.web</groupId> -->
-<!-- 			<artifactId>el-impl</artifactId> -->
-<!-- 			<version>2.2</version> -->
-<!-- 		</dependency> -->
-
 
 		<dependency>  
 		    <groupId>org.primefaces</groupId>  
@@ -225,11 +203,28 @@
 			</artifactId>
 			<version>5.1.0.Final</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.firebirdsql.jdbc</groupId> -->
+<!-- 			<artifactId>jaybird-jdk18</artifactId> -->
+<!-- 			<version>2.2.4</version> -->
+<!-- 		</dependency> -->
 		<dependency>
-			<groupId>org.firebirdsql.jdbc</groupId>
-			<artifactId>jaybird-jdk18</artifactId>
-			<version>2.2.4</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.3.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.tuckey</groupId> -->
+<!-- 		    <artifactId>urlrewritefilter</artifactId> -->
+<!-- 		    <version>4.0.3</version> -->
+<!-- 		</dependency> -->
+
+
 	</dependencies>
 
 

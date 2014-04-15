@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<configuration debug="false">
+<configuration debug="true" scan="false" scanPeriod="60 seconds" >
     
   <!-- Configuration properties file -->
   <property resource="logback.properties" />    
@@ -9,11 +9,20 @@
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread]: %class{30} - %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %class{30} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${logDir}/${logFilename}-debug.txt</file>   
+    <append>false</append>
+    <!-- encoder for file appender -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %class{30} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <appender name="ROLL" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${logDir}/${logFilename}.txt</file>   
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <!-- daily rollover  -->
@@ -23,56 +32,38 @@
     </rollingPolicy>
     <!-- encoder for file appender -->
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread]: %class{30} - %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %class{30} - %msg%n</pattern>
     </encoder>
-  </appender>
+  </appender>  
   
 
+  <logger name="com.sun.faces" level="DEBUG" />
   
-<!--   <logger name="com.sun.faces" level="debug" additivity="false"> -->
-<!--   	<appender-ref ref="STDOUT" /> -->
-<!--   </logger> -->
-<!--   <logger name="org.apache" level="INFO" additivity="false">  	 -->
-<!--   	<appender-ref ref="STDOUT" /> -->
-<!--   </logger> -->
-<!--   <logger name="javax" level="info" additivity="false">  	 -->
-<!--   	<appender-ref ref="STDOUT" /> -->
-<!--   </logger> -->
-  <logger name="org.springframework" level="INFO" additivity="false">
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger>
+  <logger name="org.springframework" level="DEBUG" />
+  <logger name="org.springframework.core" level="INFO" />
+  <logger name="org.springframework.security.web.access.ExceptionTranslationFilter" level="DEBUG" />
+  <logger name="org.springframework.security.web.util.matcher.AntPathRequestMatcher" level="INFO" />
+  <logger name="org.springframework.security.web.FilterChainProxy" level="INFO" />
+  
+  
+
 <!--   https://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-logging -->
-  <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger>  
-  <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG" additivity="false">
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger> 
-  <logger name="org.hibernate.transaction" level="DEBUG" additivity="false">
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger>     
-  <logger name="org.hibernate" level="INFO" additivity="false">
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger>
-  <logger name="ch.qos.logback" level="WARN" additivity="false">
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger>  
+  <logger name="org.hibernate" level="INFO" />
+  <logger name="org.hibernate.SQL" level="WARN"/>
+  <logger name="org.hibernate.tool.hbm2dll" level="WARN" />
+  <logger name="org.hibernate.transaction" level="DEBUG" />
+  <logger name="org.hibernate.cfg" level="INFO" />
+  <logger name="org.hibernate.validator" level="DEBUG" />
+
+  <logger name="ch.qos.logback" level="WARN" />
   
   <!-- project logger -->
-  <logger name="com.github.nill14.ttool" level="DEBUG" additivity="false">  	
-  	<appender-ref ref="STDOUT" />
-  	<appender-ref ref="FILE" />
-  </logger>
+  <logger name="com.github.nill14.ttool" level="DEBUG" />  	
   
   <root level="DEBUG">
 	<appender-ref ref="STDOUT" />
 	<appender-ref ref="FILE" />
+	<appender-ref ref="ROLL" />
   </root>   
   
 </configuration>

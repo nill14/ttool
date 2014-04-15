@@ -4,21 +4,24 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:n="http://github.com/nill14/facelets">
 	
 <ui:composition>
 	<h:form prependId="false">
+		<n:csrf/>
+		
 		<p:panel id="loginPanel" header="#{logMsg.LOGIN_HEADER}" styleClass="pack">
 			<h:panelGrid columns="2">
 				
-				<h:outputLabel for="username" value="#{logMsg.USERNAME}"/>
-				<h:inputText id="username" value="#{loginBean.username}" required="true" />
+				<p:outputLabel for="username" value="#{logMsg.USERNAME}"/>
+				<p:inputText id="username" value="#{loginBean.username}" required="true" />
 				
-				<h:outputLabel for="passwd" value="#{logMsg.PASSWD}"/>
-				<h:inputSecret id="passwd" value="#{loginBean.password}"/>
+				<p:outputLabel for="password" value="#{logMsg.PASSWD}"/>
+				<p:password id="password" value="#{loginBean.password}"/>
 				
 				<h:link value="#{logMsg.REGISTRATION}" outcome="/registration"/>
-				<h:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}"/>
+				<p:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}"/>
 			
 			</h:panelGrid>		
 		</p:panel>

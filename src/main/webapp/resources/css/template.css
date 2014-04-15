@@ -61,11 +61,12 @@ div.pack {
 /* 	border: 1px dotted black; */
 }
 
-div.pack input[type="submit"] {
+div.pack input[type="submit"], div.pack button {
 	float: right;
 	margin-top: 12pt;
 	margin-bottom: 6pt;
 }
+
 
 #menu {
 	position: absolute;

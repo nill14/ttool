@@ -10,9 +10,7 @@
 		<config>src/main/resources/spring/applicationContext.xml</config>
 		<config>src/main/resources/spring/jdbcContext.xml</config>
 		<config>src/main/resources/spring/hbmContext.xml</config>
-		<config>src/test/resources/spring/applicationContext-test.xml</config>
-		<config>src/test/resources/spring/jdbcContext-test.xml</config>
-		<config>src/test/resources/spring/hbmContext-test.xml</config>
+		<config>src/main/resources/spring/securityContext.xml</config>
 	</configs>
 	<configSets>
 	</configSets>
