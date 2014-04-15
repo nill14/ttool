@@ -21,7 +21,7 @@
 				<p:password id="password" value="#{loginBean.password}"/>
 				
 				<h:link value="#{logMsg.REGISTRATION}" outcome="/registration"/>
-				<p:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}"/>
+				<p:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}" ajax="false"/>
 			
 			</h:panelGrid>		
 		</p:panel>

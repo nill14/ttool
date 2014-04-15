@@ -10,13 +10,17 @@
 
 	<h:form>
 	
-		<h:panelGrid columns="2">
+		<h:panelGrid columns="4">
 	 
+			<h:outputLabel value="#{principalBean.username}" rendered="#{principalBean.loggedIn}"/>
+			<h:commandButton action="#{principalBean.logout}" rendered="#{principalBean.loggedIn}" value="Logout"/>
+
 			<h:outputLabel for="" value="#{msg.LANG}: "></h:outputLabel> 
 			<h:selectOneMenu value="#{localeBean.displayLanguage}" onchange="submit()"
 				valueChangeListener="#{localeBean.languageChanged}">
 				<f:selectItems value="#{localeBean.languages}" />
 			</h:selectOneMenu>
+			
 	
 		</h:panelGrid>
 		
