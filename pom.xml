@@ -13,7 +13,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<slf4j.version>1.7.6</slf4j.version>
 	</properties>
 
 	<dependencyManagement>
@@ -21,7 +20,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-framework-bom</artifactId>
-				<version>4.0.2.RELEASE</version>
+				<version>4.0.3.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -75,21 +74,32 @@
 			<version>1.4.5.RELEASE</version>
 		</dependency>		
 
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+
 <!-- 		Logging dependencies  -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j.version}</version>
+			<version>1.7.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
-			<version>${slf4j.version}</version>
+			<version>1.7.6</version>
 		</dependency>		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
+			<version>1.7.6</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -98,7 +108,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-<!-- 		Database dependencies -->
+<!-- 		JDBC & ORM dependencies -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -116,6 +126,12 @@
 			<artifactId>h2</artifactId>
 			<version>1.3.175</version>
 		</dependency>
+	
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.firebirdsql.jdbc</groupId> -->
+<!-- 			<artifactId>jaybird-jdk18</artifactId> -->
+<!-- 			<version>2.2.4</version> -->
+<!-- 		</dependency>		 -->
 
 <!-- 		Testing dependencies -->
 		<dependency>
@@ -182,13 +198,25 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+			<scope>provided</scope>
+		</dependency>			
 
 		<dependency>  
 		    <groupId>org.primefaces</groupId>  
 		    <artifactId>primefaces</artifactId>  
 		    <version>4.0</version>  
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>4.0.3</version>
+		</dependency>
 
 
 		<dependency>
@@ -203,11 +231,6 @@
 			</artifactId>
 			<version>5.1.0.Final</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.firebirdsql.jdbc</groupId> -->
-<!-- 			<artifactId>jaybird-jdk18</artifactId> -->
-<!-- 			<version>2.2.4</version> -->
-<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -218,11 +241,6 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>3.2.3.RELEASE</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.tuckey</groupId> -->
-<!-- 		    <artifactId>urlrewritefilter</artifactId> -->
-<!-- 		    <version>4.0.3</version> -->
-<!-- 		</dependency> -->
 
 
 	</dependencies>

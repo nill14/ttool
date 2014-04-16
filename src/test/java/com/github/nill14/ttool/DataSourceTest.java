@@ -17,12 +17,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ContextConfiguration(locations="classpath:/spring/applicationContext.xml")
+@ContextConfiguration(locations="classpath:/spring/jdbc-context.xml")
 public class DataSourceTest {
 
 	@Rule
