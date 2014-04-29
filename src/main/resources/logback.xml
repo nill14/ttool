@@ -56,6 +56,9 @@
   <logger name="org.hibernate.validator" level="DEBUG" />
 
   <logger name="ch.qos.logback" level="WARN" />
+
+  <logger name="org.tuckey.web.filters.urlrewrite" level="WARN" />
+
   
   <!-- project logger -->
   <logger name="com.github.nill14.ttool" level="DEBUG" />  	

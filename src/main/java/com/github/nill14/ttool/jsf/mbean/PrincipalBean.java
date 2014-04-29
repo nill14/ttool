@@ -1,15 +1,8 @@
 package com.github.nill14.ttool.jsf.mbean;
 
-import java.io.IOException;
 import java.io.Serializable;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +10,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+
+import com.github.nill14.ttool.sandbox.SandboxUtils;
 
 @Named("principalBean")
 @Scope("session")
@@ -52,21 +47,7 @@ public class PrincipalBean implements Serializable
 	public String logout() {
     	log.info("principalBean#logout");
     	
-        try {
-            FacesContext ctx = FacesContext.getCurrentInstance();
-            ExternalContext ectx = ctx.getExternalContext();
-            HttpServletRequest request = (HttpServletRequest) ectx.getRequest();
-            HttpServletResponse response = (HttpServletResponse) ectx.getResponse();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/logout");
-            dispatcher.forward(request, response);
-            ctx.responseComplete();
-        } catch (ServletException ex) {
-            log.error("principalBean#logout", ex);
-        } catch (IOException ex) {
-        	log.error("principalBean#logout", ex);
-        }    	
-    	
-        return null;
+    	return SandboxUtils.forwardTo("/logout");
 	}
 
 }

@@ -19,12 +19,16 @@
 
 
 	<http pattern="/javax.faces.resource/**" security="none"/>
+	
+<!-- 	test -->
+<!-- 	<http pattern="/welcome.xhtml" security="none"/> -->
 <!-- 	<intercept-url pattern="/logout" method="POST" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 
 	<http>
 		<!-- <intercept-url pattern="/**" access="ROLE_USER" /> -->
 <!-- 		<intercept-url pattern="/javax.faces.resource/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 		<intercept-url pattern="/login.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/registration.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/map.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/**" access="ROLE_USER" />
 <!-- 		<http-basic /> -->
@@ -33,11 +37,11 @@
 			password-parameter="password"
 			default-target-url="/welcome.xhtml" 
 			login-processing-url="/j_spring_security_check"
-			authentication-failure-url="/map.xhtml"/>
+			authentication-failure-url="/login.xhtml"/>
 		<logout logout-url="/logout"
 			invalidate-session="true"
 			delete-cookies="JSESSIONID"
-			logout-success-url="/map.xhtml"/>
+			logout-success-url="/login.xhtml"/>
 			
 				
 

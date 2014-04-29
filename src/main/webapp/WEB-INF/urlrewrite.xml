@@ -32,6 +32,11 @@
         <from>/rewrite-status</from>
         <to>/test/status/</to>
     </outbound-rule>
+    
+    <rule>
+    	<from>/helloPage</from>
+    	<to>/welcome.xhtml</to>
+    </rule>
 
 
     <!--

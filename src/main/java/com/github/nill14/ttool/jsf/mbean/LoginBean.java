@@ -4,19 +4,15 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
+import com.github.nill14.ttool.sandbox.SandboxUtils;
 import com.github.nill14.ttool.service.IUserService;
 
 //@ManagedBean
@@ -59,22 +55,7 @@ public class LoginBean implements Serializable
     public String login() throws ServletException, IOException {
     	log.info("loginBean#login");
     	
-    	
-        try {
-            FacesContext ctx = FacesContext.getCurrentInstance();
-            ExternalContext ectx = ctx.getExternalContext();
-            HttpServletRequest request = (HttpServletRequest) ectx.getRequest();
-            HttpServletResponse response = (HttpServletResponse) ectx.getResponse();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/j_spring_security_check");
-            dispatcher.forward(request, response);
-            ctx.responseComplete();
-        } catch (ServletException ex) {
-            log.error("loginBean#login", ex);
-        } catch (IOException ex) {
-        	log.error("loginBean#login", ex);
-        }    	
-    	
-        return "/welcome?faces-redirect=true";
+    	return SandboxUtils.forwardTo("/j_spring_security_check");
     }
 
 

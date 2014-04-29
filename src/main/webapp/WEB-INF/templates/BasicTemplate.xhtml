@@ -1,18 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="#{localeBean.language}"
+<html lang="#{localeBean.languageCode}"
 	  xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:n="http://github.com/nill14/facelets">
 
 
-<f:view contentType="text/html" locale="#{localeBean.language}">
+<f:view contentType="text/html" locale="#{localeBean.languageCode}">
 	<h:head>
 		<title><ui:insert name="title">ttool</ui:insert></title>
 		<link rel="shortcut icon" type="image/x-icon" href="#{resource['ico/favicon.ico']}"/>
 		 
-	 	<ui:insert name="styles">
+	 	<ui:insert name="headExtensions">
 			<h:outputStylesheet library="css" name="template.css"/>
 		 
 		 </ui:insert>

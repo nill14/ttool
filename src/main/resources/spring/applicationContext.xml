@@ -15,7 +15,7 @@
 	<import resource="classpath:/spring/faces-context.xml" />
 	<import resource="classpath:/spring/security-context.xml" />
 
-	<import resource="classpath:/spring/*-context.xml" />
+<!-- 	<import resource="classpath:/spring/*-context.xml" /> -->
 
 	
 </beans>
