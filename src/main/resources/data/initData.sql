@@ -171,8 +171,8 @@ INSERT INTO countries VALUES
  (200,'1994-07-01 00:00:00','1998-12-31 00:00:00','AC_ACCOUNT',90);
  
  INSERT INTO Users (USER_ID,USERNAME,EMAIL,PASSWD, ACTIVATED, DISABLED) VALUES 
- ('40281881452dc8be01452dc9c3430000','Pavel','pavel.sklenak@gmail.com','c4d87ac240175a46a306f084ef98e47518947767', true, true),
- ('40281881452dd11701452dd15fd60000','admin','a.b.cd','f124250aa09a7efd17de085b5ca4faa63426dc67', true, true);
+ ('40281881452dc8be01452dc9c3430000','Pavel','pavel.sklenak@gmail.com','$2a$10$LDOX7QLqiyPcIKwdsc1MWuIkohpk37xSDgGJkTc9tmiLPBW5Ih3WC', true, false),
+ ('40281881452dd11701452dd15fd60000','admin','a.b.cd','$2a$10$LDOX7QLqiyPcIKwdsc1MWuIkohpk37xSDgGJkTc9tmiLPBW5Ih3WC', true, false);
 
  
 

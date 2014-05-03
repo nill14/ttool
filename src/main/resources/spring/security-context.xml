@@ -12,9 +12,9 @@
 <!--   public Account[] findAccounts(); -->
 <!--   @PreAuthorize("hasAuthority('ROLE_TELLER')") -->
 
-<!-- 	<global-method-security pre-post-annotations="enabled" jsr250-annotations="enabled"> -->
+	<global-method-security jsr250-annotations="enabled">
 <!-- 		<expression-handler ref="expressionHandler" /> -->
-<!-- 	</global-method-security> -->
+	</global-method-security>
 
 
 
@@ -30,6 +30,9 @@
 		<intercept-url pattern="/login.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/registration.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<intercept-url pattern="/map.xhtml" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		
+<!-- 		pattern for development -->
+<!-- 		<intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/> -->
 		<intercept-url pattern="/**" access="ROLE_USER" />
 <!-- 		<http-basic /> -->
 		<form-login login-page="/login.xhtml"
@@ -37,26 +40,27 @@
 			password-parameter="password"
 			default-target-url="/welcome.xhtml" 
 			login-processing-url="/j_spring_security_check"
-			authentication-failure-url="/login.xhtml"/>
+			authentication-failure-url="/login.xhtml?login_error"/>
+<!-- 			authentication-failure-handler-ref="authenticationFailureHandler" /> -->
 		<logout logout-url="/logout"
 			invalidate-session="true"
 			delete-cookies="JSESSIONID"
-			logout-success-url="/login.xhtml"/>
+			logout-success-url="/login.xhtml?logout"/>
 			
-				
+		<remember-me remember-me-parameter="persistentLogin"/>		
 
 		<!-- <custom-filter ref="myAuthFilter" position="FORM_LOGIN_FILTER" /> -->
 		<!-- <session-management -->
 		<!-- session-authentication-strategy-ref="sas" /> -->
 
-<!-- 		<csrf /> -->
+		<csrf />
 		<headers />
 	</http> 	
 
 	
 
 	<authentication-manager>
-		<authentication-provider user-service-ref='myUserDetailsService'>
+		<authentication-provider user-service-ref='userService'>
 			<password-encoder ref="passwordEncoder" />
 			<!-- <user-service> -->
 			<!-- <user name="admin" password="admin" authorities="ROLE_USER" /> -->
@@ -64,14 +68,9 @@
 		</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean id="myUserDetailsService"
-			class="com.github.nill14.ttool.spring.security.MyUserDetailsService">
-<!-- 	    class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl"> -->
-<!-- 	  <beans:property name="dataSource" ref="dataSource"/> -->
-	</beans:bean>
-	
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
+<!-- 	<beans:bean id="authenticationFailureHandler" class="com.github.nill14.ttool.spring.security.MyAuthenticationFailureHandler" /> -->
 		
 <!-- 		<beans:bean id="expressionHandler" class="CustomExpressionHandler"/> -->
 </beans:beans>

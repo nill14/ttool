@@ -8,23 +8,20 @@
     xmlns:n="http://github.com/nill14/facelets">
 
 <ui:composition>
-
-	<h:form>
 	
-		<h:panelGrid columns="4">
-	 
-			<h:outputLabel value="#{principalBean.username}" rendered="#{principalBean.loggedIn}"/>
-			<h:commandButton action="#{principalBean.logout}" rendered="#{principalBean.loggedIn}" value="Logout"/>
+	<h:panelGrid columns="4">
+ 
+		<h:outputLabel value="#{principalBean.username}" rendered="#{principalBean.loggedIn}"/>
+		<h:commandButton action="#{principalBean.logout}" rendered="#{principalBean.loggedIn}" value="Logout"/>
 
-			<h:outputLabel for="" value="#{msg.LANG}: "></h:outputLabel> 
-			<h:selectOneMenu value="#{localeBean.displayLanguage}" onchange="submit()"
-				valueChangeListener="#{localeBean.languageChanged}">
-				<f:selectItems value="#{localeBean.languages}" />
-			</h:selectOneMenu>
-			
-	
-		</h:panelGrid>
+		<h:outputLabel for="" value="#{msg.LANG}: "></h:outputLabel> 
+		<h:selectOneMenu value="#{localeBean.displayLanguage}" onchange="submit()"
+			valueChangeListener="#{localeBean.languageChanged}">
+			<f:selectItems value="#{localeBean.languages}" />
+		</h:selectOneMenu>
 		
-	</h:form>
+
+	</h:panelGrid>
+		
 </ui:composition>
 </html>

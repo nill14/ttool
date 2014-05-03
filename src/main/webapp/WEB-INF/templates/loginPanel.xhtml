@@ -8,29 +8,34 @@
     xmlns:n="http://github.com/nill14/facelets">
 	
 <ui:composition>
-	<h:form prependId="false">
-		<n:csrf/>
 		
-		<p:panel id="loginPanel" header="#{logMsg.LOGIN_HEADER}" styleClass="pack">
-			<h:panelGrid columns="2">
-				
-				<p:outputLabel for="username" value="#{logMsg.USERNAME}"/>
-				<p:inputText id="username" value="#{loginBean.username}" required="true" />
-				
-				<p:outputLabel for="password" value="#{logMsg.PASSWD}"/>
-				<p:password id="password" value="#{loginBean.password}" required="true" />
-				
-				<p:outputLabel value="#{msg.LANG}: "/>
-				<h:selectOneMenu value="#{localeBean.displayLanguage}" onchange="submit()">
-					<f:selectItems value="#{localeBean.languages}" />
-				</h:selectOneMenu>
-				
-				<h:link value="#{logMsg.REGISTRATION}" outcome="/registration"/>
-				<p:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}" ajax="false"/>
+	<p:panel id="loginPanel" header="#{logMsg.LOGIN_HEADER}" styleClass="pack">
+	
+		<f:event listener="#{loginBean.updateMessages(true)}" type="preRenderView" />
+	
+		<p:messages id="loginMessages" showDetail="true" autoUpdate="true" closable="true" for="loginMessages"/>
+		<h:panelGrid columns="2">
 			
-			</h:panelGrid>		
-		</p:panel>
-	</h:form>
+			<p:outputLabel for="username" value="#{logMsg.USERNAME}"/>
+			<p:inputText id="username" value="#{loginBean.username}" required="true" />
+			
+			<p:outputLabel for="password" value="#{logMsg.PASSWD}"/>
+			<p:password id="password" value="#{loginBean.password}" required="true" />
+			
+			<p:outputLabel value="#{msg.LANG}: "/>
+			<h:selectOneMenu value="#{localeBean.displayLanguage}" onchange="submit()">
+				<f:selectItems value="#{localeBean.languages}" />
+			</h:selectOneMenu>
+
+			
+			<p:outputLabel value="#{logMsg.REMEMBER_ME}: " for="persistentLogin"/>
+			<p:selectBooleanCheckbox id="persistentLogin" value="#{loginBean.persistentLogin}" />
+			
+			<h:link value="#{logMsg.REGISTRATION}" outcome="/registration"/>
+			<p:commandButton value="#{logMsg.LOGIN}" action="#{loginBean.login}" ajax="false" update="errorMessages"/>
+		
+		</h:panelGrid>		
+	</p:panel>
 	
 </ui:composition>
 </html>
