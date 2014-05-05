@@ -33,4 +33,9 @@ public class ColumnModel implements Serializable {
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}  
+	
+	@Override
+	public String toString() {
+		return String.format("ColumnModel[%s]", property);
+	}
 } 

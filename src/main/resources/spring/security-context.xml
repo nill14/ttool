@@ -47,7 +47,7 @@
 			delete-cookies="JSESSIONID"
 			logout-success-url="/login.xhtml?logout"/>
 			
-		<remember-me remember-me-parameter="persistentLogin"/>		
+		<remember-me remember-me-parameter="persistentLogin_input"/>	<!-- Primefaces appends _input to id -->	
 
 		<!-- <custom-filter ref="myAuthFilter" position="FORM_LOGIN_FILTER" /> -->
 		<!-- <session-management -->

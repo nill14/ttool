@@ -11,7 +11,7 @@
       
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	
-	<ui:define name="title">Users</ui:define>
+	<ui:define name="title">#{tableBrowser.title}</ui:define>
 	<ui:define name="headExtensions">
 		<h:outputStylesheet library="css" name="template.css"/>
   		<h:outputStylesheet library="css" name="table.css"/>
@@ -36,23 +36,23 @@
 			  
 			</p:tabView>  	
     	
-	    	<p:dataTable id="usersTable" var="user" value="#{usersBean.model}" 
+	    	<p:dataTable id="dynamicTable" var="row" value="#{tableBrowser.model}" 
 	    			paginator="true" rows="10" paginatorAlwaysVisible="false"  
 	    			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-	                rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{usersBean.selectedUser}" lazy="true"
+	                rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{tableBrowser.selectedItem}" lazy="true"
 	                resizableColumns="true" liveResize="true">
 <!-- 	                rowKey="#{user.userId}"  > -->
 <!-- 	                editable="true" -->
 <!-- 	                stickyHeader="true" -->
 <!-- 	    			sortMode="multiple" -->
 
-				<f:facet name="header">Users</f:facet>
+				<f:facet name="header">#{tableBrowser.title}</f:facet>
 
 				<p:column style="width:6%">
 					<p:rowEditor />
 				</p:column>
 
-				<p:columns value="#{usersBean.columns}" var="column" >
+				<p:columns value="#{tableBrowser.columns}" var="column" >
 <!-- 				sortBy="#{column.property}" -->
 	    				
 	    			<f:facet name="header">#{column.header}</f:facet>
@@ -67,7 +67,7 @@
 <!-- 		                </f:facet>   -->
 <!-- 		            </p:cellEditor> 	    			 -->
 	    			
-	    			#{user[column.property]}
+	    			#{row[column.property]}
 	    		</p:columns>
 	    		
 	    	

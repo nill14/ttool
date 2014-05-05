@@ -56,7 +56,7 @@ public class LoginBean implements Serializable
 	    	String message = ex.getMessage();
 			log.error("Authentication Failed! {}", message);
 	        log.error("Authentication Failed! ", ex);
-	        MessagesController.addError("loginMessages", "Authentication Failed!", message);
+	        MessagesController.addError("loginMessages", message);
 	    }
     }
     

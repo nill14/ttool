@@ -7,15 +7,17 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.metamodel.EntityType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
+import com.github.nill14.ttool.datarepo.UserRepository;
 import com.github.nill14.ttool.entity.security.User;
 import com.github.nill14.ttool.sandbox.ColumnModel;
-import com.github.nill14.ttool.service.IUserService;
-import com.google.common.collect.Lists;
+import com.github.nill14.ttool.service.ITableService;
+import com.google.common.base.Function;
 
 @Named("usersBean")
 @Scope("session")
@@ -25,10 +27,13 @@ public class UsersBean implements Serializable {
 	private static final Logger log = LoggerFactory.getLogger(UsersBean.class);
 
 	@Inject
-	private IUserService userService;
+	private ITableService tableService;
+	
+	@Inject 
+	private UserRepository userRepository;
 
 	private List<ColumnModel> columns = new ArrayList<ColumnModel>();
-	private UsersDataModel model;  
+	private JpaRepositoryDataModel model;  
 	private List<User> users;
 	private User selectedUser;
 
@@ -44,9 +49,16 @@ public class UsersBean implements Serializable {
 		columns.add(new ColumnModel("Activated", "activated", true));
 		columns.add(new ColumnModel("Disabled", "disabled", true));
 		
-		this.users = Lists.newArrayList(userService.getAllUsers());
 		
-		model = new UsersDataModel(userService, this.users);
+		EntityType<?> entityType = tableService.getEntityType("User");
+		model = tableService.getDataModel(entityType);
+		model.setKeyFunction((Function) new Function<User, String>() {
+
+			@Override
+			public String apply(User input) {
+				return input.getUserId();
+			}
+		});
 	}
 	
 	
@@ -75,12 +87,12 @@ public class UsersBean implements Serializable {
 	}
 
 
-	public UsersDataModel getModel() {
+	public JpaRepositoryDataModel getModel() {
 		return model;
 	}
 
 
-	public void setModel(UsersDataModel model) {
+	public void setModel(JpaRepositoryDataModel model) {
 		this.model = model;
 	}
 
