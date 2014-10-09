@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 
+import temp.TableServiceHelper;
+
 import com.github.nill14.ttool.datarepo.UserRepository;
 import com.github.nill14.ttool.entity.security.User;
 import com.github.nill14.ttool.sandbox.ColumnModel;
@@ -28,6 +30,9 @@ public class UsersBean implements Serializable {
 
 	@Inject
 	private ITableService tableService;
+	
+	@Inject
+	private TableServiceHelper tableServiceHelper;
 	
 	@Inject 
 	private UserRepository userRepository;
@@ -51,7 +56,7 @@ public class UsersBean implements Serializable {
 		
 		
 		EntityType<?> entityType = tableService.getEntityType("User");
-		model = tableService.getDataModel(entityType);
+		model = tableServiceHelper.getDataModel(entityType);
 		model.setKeyFunction((Function) new Function<User, String>() {
 
 			@Override

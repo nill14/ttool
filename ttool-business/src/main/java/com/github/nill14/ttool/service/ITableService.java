@@ -7,7 +7,6 @@ import javax.persistence.metamodel.EntityType;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.github.nill14.ttool.jsf.mbean.JpaRepositoryDataModel;
 import com.github.nill14.ttool.sandbox.ColumnModel;
 
 public interface ITableService {
@@ -19,7 +18,5 @@ public interface ITableService {
 	EntityType<?> getEntityType(String tableName);
 
 	<T> JpaRepository<T, ? extends Serializable> getRepository(EntityType<T> entityType);
-
-	<T> JpaRepositoryDataModel getDataModel(EntityType<T> entityType);
 
 }

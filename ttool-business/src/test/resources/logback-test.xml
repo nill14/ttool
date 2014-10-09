@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="true">
+    
+  <!-- Standard console appender configuration -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread]: %class{30} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  
+
+  
+<!--   <logger name="com.sun.faces" level="debug" additivity="false"> -->
+<!--   	<appender-ref ref="STDOUT" /> -->
+<!--   </logger> -->
+<!--   <logger name="org.apache" level="INFO" additivity="false">  	 -->
+<!--   	<appender-ref ref="STDOUT" /> -->
+<!--   </logger> -->
+<!--   <logger name="javax" level="info" additivity="false">  	 -->
+<!--   	<appender-ref ref="STDOUT" /> -->
+<!--   </logger> -->
+  <logger name="org.springframework" level="INFO" additivity="false">
+  	<appender-ref ref="STDOUT" />
+  </logger>
+<!--   https://docs.jboss.org/hibernate/orm/4.1/manual/en-US/html/ch03.html#configuration-logging -->
+  <logger name="org.hibernate.SQL" level="INFO" additivity="false">
+  	<appender-ref ref="STDOUT" />
+  </logger>  
+  <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG" additivity="false">
+  	<appender-ref ref="STDOUT" />
+  </logger> 
+  <logger name="org.hibernate.transaction" level="DEBUG" additivity="false">
+  	<appender-ref ref="STDOUT" />
+  </logger>     
+  <logger name="org.hibernate" level="INFO" additivity="false">
+  	<appender-ref ref="STDOUT" />
+  </logger>
+  <logger name="ch.qos.logback" level="WARN" additivity="false">
+  	<appender-ref ref="STDOUT" />
+  </logger>  
+  
+  <!-- project logger -->
+  <logger name="com.github.nill14.ttool" level="DEBUG" additivity="false">  	
+  	<appender-ref ref="STDOUT" />
+  </logger>
+  
+  <root level="DEBUG">
+	<appender-ref ref="STDOUT" />
+  </root>   
+  
+</configuration>

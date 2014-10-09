@@ -20,6 +20,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import temp.TableServiceHelper;
+
 import com.github.nill14.ttool.entity.security.User;
 import com.github.nill14.ttool.sandbox.ColumnModel;
 import com.github.nill14.ttool.service.ITableService;
@@ -34,6 +36,9 @@ public class TableBrowserBean implements Serializable {
 
 	@Inject
 	private ITableService tableService;
+
+	@Inject
+	private TableServiceHelper tableServiceHelper;
 	
 	private List<ColumnModel> columns = new ArrayList<ColumnModel>();
 	private JpaRepositoryDataModel model;  
@@ -56,7 +61,7 @@ public class TableBrowserBean implements Serializable {
 			
 //		this.users = Lists.newArrayList(userService.getAllUsers());
 			
-			model = tableService.getDataModel(entityType);
+			model = tableServiceHelper.getDataModel(entityType);
 		}
 	}
 	

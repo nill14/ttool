@@ -9,11 +9,11 @@
 
 	<context:annotation-config/>
 
-	<import resource="classpath:/spring/jdbc-context.xml" />
-	<import resource="classpath:/spring/hbm-context.xml" />
-	<import resource="classpath:/spring/service-context.xml" />
-	<import resource="classpath:/spring/faces-context.xml" />
-	<import resource="classpath:/spring/security-context.xml" />
+	<import resource="classpath*:/spring/jdbc-context.xml" />
+	<import resource="classpath*:/spring/hbm-context.xml" />
+	<import resource="classpath*:/spring/service-context.xml" />
+	<import resource="classpath*:/spring/faces-context.xml" />
+	<import resource="classpath*:/spring/security-context.xml" />
 
 <!-- 	<import resource="classpath:/spring/*-context.xml" /> -->
 
